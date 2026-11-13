@@ -33,3 +33,34 @@ def decidir_ganador(user_action, computer_action):
             
     else:
         print("Opción no válida.")
+
+def main():
+    """
+    función principal que gestiona el bucle del juego.
+    el usuario puede jugar varias rondas seguidas hasta salir con Ctrl+C.
+    """
+    opciones_validas = [PIEDRA, PAPEL, TIJERAS]
+    
+    print("Bienvenido al juego de Piedra, Papel o Tijera!")
+    print("Para salir del juego en cualquier momento, presiona Ctrl + C.\n")
+    
+    while True:
+        # Solicitar entrada al usuario
+        user_action = input("Elige una opción (piedra, papel o tijera): ").lower().strip()
+        
+        # Validar que la entrada sea correcta
+        if user_action not in opciones_validas:
+            print("⚠️ Opción incorrecta. Por favor, escribe piedra, papel o tijera.")
+            continue
+            
+        # El ordenador elige al azar
+        computer_action = random.choice(opciones_validas)
+        
+        print(f"\nElegiste {user_action}. El ordenador eligió {computer_action}")
+        
+        # Llamar a la función para decidir el ganador
+        decidir_ganador(user_action, computer_action)
+        print("-" * 40)
+
+if __name__ == "__main__":
+    main()
